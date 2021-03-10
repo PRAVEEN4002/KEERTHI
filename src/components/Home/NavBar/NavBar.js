@@ -49,9 +49,9 @@ class NavBar extends React.Component {
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                         <Glogin/>
-                                    <li>   
+                                    {/* <li>   
                                         <Link to='/Login'><span class="glyphicon glyphicon-log-in" style={{backgroundColor:'transparent'}}></span> Login</Link>                  
-                                    </li>
+                                    </li> */}
                                 
                                 </ul>
 
