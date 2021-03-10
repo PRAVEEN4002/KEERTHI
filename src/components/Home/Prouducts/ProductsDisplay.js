@@ -17,7 +17,7 @@ const ProductsDisplay = (props) => {
                                     <div class="TextContent">
                                         <div className="Name">{item.Name}</div>
                                         <Link to={`/Buy/${item.Name}`}><div className="btn">Buy Now</div></Link>  
-                                          <div className="btn">Add to Cart</div>
+                                        <Link to={`/Buy/${item.Name}`}><div className="btn">Add to Cart</div></Link>  
                                     </div>        
                                 </div>
                         </div>

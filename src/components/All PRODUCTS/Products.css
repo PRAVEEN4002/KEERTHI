@@ -1,0 +1,89 @@
+.main{
+    background-color: #faf4f4;
+    margin-top: 65px;
+
+   background-color: rgb(243, 233, 233);
+
+    position: relative;
+}
+ /* css for filter component */
+/* .Filter-component{
+    width: 20%;;
+    height: 720px;
+   box-shadow: 2px 5px 5px 2px powderblue;
+   float: left;
+   position: relative;
+
+}
+.F-Main{
+  margin-left: 10%;
+  margin-top: 1%;
+}
+.F-head{
+  color: darkblue;
+  font-size: 25px;
+ }
+ .F-head1{
+  color: darkblue;
+  font-size: 18px;
+  margin-top: 15px;
+ } */
+
+  /* css for mobiles component */
+.Mobiles-component{
+    position: relative;
+    width: 100%;
+    margin-right: 1%;
+    margin-left: 1%;
+    height: 720x;
+   margin-top: 0.1%;
+}
+.MainCard{
+  height: 320px;
+  width: 255px;
+  /* border: 0.1px dotted black; */
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-right: 1%;
+  background-color: white;
+  box-shadow: 0.1px 0.1px 2px 0.1px;
+}
+.Card-image{
+  width: 100%;
+  height: 65%;
+  margin-top: 2%;
+}
+.Card-title{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: darkblue;
+  margin-top: 0%;
+}
+.Card-Price{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(89, 152, 173);
+  margin-top: 1%;
+}
+.Card-btn{
+text-align: center;
+align-items: center;
+ margin-left: 15%;
+ margin-top: 2%;
+ width: 65%;
+}
+
+
+/* OPTIMIZING FOR DIFFERENT SCREENS */
+
+@media screen  and (min-width:0px) and (max-width:460px) {
+  .Mobiles-component{
+   margin-left: 10%;
+  }
+  .MainCard{
+    width: 300px;
+    height: 370px;
+  }
+}

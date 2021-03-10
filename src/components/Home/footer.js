@@ -5,7 +5,7 @@ const Footer = () => {
         <React.Fragment>
            
                 <div className='footer'>
-                    <h2> &copy; <u>Bi store developed with</u>  &hearts; </h2>
+                    <div> &copy; <u>Bi store developed with</u>  &hearts; </div>
                 </div>
         
           

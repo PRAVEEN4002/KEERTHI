@@ -13,7 +13,7 @@ class Products extends React.Component{
     componentDidMount(){
         
         
-        fetch(url,{method:'GET'}).then((res)=>res.json()).then((data)=>{this.setState({products:data})})
+        fetch(`${url}?popular=true`,{method:'GET'}).then((res)=>res.json()).then((data)=>{this.setState({products:data})})
     }
     
     

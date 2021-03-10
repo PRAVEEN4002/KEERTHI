@@ -1,3 +1,14 @@
+.login{
+    margin-top: 80px;
+    background-color:white;
+    width: 100%;
+    margin-bottom:15px;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif
+    
+}
+
+
 .dt-bx{
     width: 98%;
     color: darkblue;
@@ -7,6 +18,8 @@
     background-color:#faf4f4;
     box-shadow:rgb(206, 204, 221) 2px 5px 5px 2px;
     padding: 0.5px 1px 1px 8%;
+    font-family: 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif
   
 }
 .dt-main{
@@ -23,10 +36,12 @@
     color: red;
     font-size: 28px;
 }
-/* .dt-h1{
+.dt-h1{
+    margin-top: 0px;
     padding-top: 0.5px;
-    padding-left: 18px;
-} */
+   font-size: 25px;
+   font-weight: 500;
+}
 dt-li{
     margin-bottom: 10px;
 }
@@ -47,6 +62,14 @@ dt-li{
 }
 .dt-st:hover{
     background-color:rgb(228, 235, 241);
+}
+.dt-color-h1{
+    font-size: 30px;
+}
+.dt-color-st{
+    margin-top: 4%;
+    font-size: 30px;
+    
 }
 .dt-color{
     background-color: #fff;
@@ -213,8 +236,6 @@ dt-li{
     .dt-color{
         font-size:12px;
         height: 50px;
-
-        
     }
     .dt-color-lt{
         padding-top: 0px;
@@ -247,6 +268,11 @@ dt-li{
         font-size: 20px;
        text-align: center;
     }
+    .dt-h1{
+        padding-top: 0.5px;
+       font-size: 20px;
+       font-weight: 500;
+    }
     
 
 }
@@ -258,6 +284,36 @@ dt-li{
     margin-bottom: 6%;
      background-color:rgb(206, 21, 21);
 
+}
+@media screen and (min-width:0px) and (max-width:420px){
+    .dt-st{
+        font-size: 12px;
+        width: 25%;
+        margin-top: 0px;
+        padding-top:4%;
+        height: 45px;
+    }
+    .dt-color-h1{
+        font-size: 18px;
+    }
+    .dt-color-st{
+        font-size: 18px;
+        margin: 0px;
+        margin-top: 4px;
+        
+    }
+    .dt-main{
+        /* margin-top: 2%; */
+        background-color:#fff;
+        height: 65px;
+        top:2%;
+        padding-left: 20px;
+        position: sticky;
+        width: 95%;
+    }
+    .dt-price{
+        font-size: 20px;
+    }
 }
 
 /* css for image container  */

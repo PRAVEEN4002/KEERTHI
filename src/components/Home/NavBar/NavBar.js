@@ -1,5 +1,7 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
+import LOGIN from '../LOGIN/LOGIN.js'
+import Glogin from '../Glogin/login.js'
 import './NavBar.css'
 import GoogleLogin from 'react-google-login'
 class NavBar extends React.Component {
@@ -7,23 +9,14 @@ class NavBar extends React.Component {
         super()
         this.state={
             User:'',
+            Brands:{
+                name1:"REDMI MOBILES",
+                name2:"MI MOBILES",
+                name3:"POCO MOBILES"
+            }
         }
     }
-    responseGoogle=(response)=>{
-     
-        this.setState({User:response.profileObj});
-        console.log('this is the user data',this.state.User)
-        var x=response.profileObj.googleId;
-     
-        localStorage.setItem('document',JSON.stringify(response.profileObj));
-        sessionStorage.setItem('GID',x)
-        console.log('this is ',response.profileObj.googleId)
-      
-    }
-   
     render(){
-    if(this.state.User==''){
-
         return (
         
             <div className='HEADER'>
@@ -49,27 +42,19 @@ class NavBar extends React.Component {
                                 </div>
                                 <div class="collapse navbar-collapse" id="myNavbar">
                                 <ul class="nav navbar-nav"style={{color:''}}>
-                                    <li class="active dropbtn"><a href="#">MI MOBILES</a></li>
-                                    <li class="dropdown">
-                                    <a  href="#">REDMI MOBILES </a>
-                                  
-                                    </li>
-                                    <li><a href="#">POCO MOBILES</a></li>
-                                   
+                                    
+                                    <li class="active dropbtn"><Link to={`/Products/${this.state.Brands.name2}`}> MI MOBILES </Link></li>
+                                    <li class="dropdown"><Link to={`/Products/${this.state.Brands.name1}`}> REDMI MOBILES</Link></li>
+                                    <li><Link to={`/Products/${this.state.Brands.name3}`}> POCO MOBILES</Link></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
-                                    {/* <li> <button className='btn btn-sucess' data-toggle='modal' data-target='sign-in'><a href="#"><span class="glyphicon glyphicon-user" onclick={()=>{this.LoginAccount()}}></span> Sign Up</a></button></li> */}
-                                    <li>
-                                    <GoogleLogin clientId="893427255421-isqqk1b6m6iqpf8dag27ssqrfkji1bk8.apps.googleusercontent.com" 
-                                        buttonText="Login"
-                                        onSuccess={this.responseGoogle}
-                                        onFailure={this.responseGoogle}
-                                        cookiePolicy={'single_host_origin'}/>
+                                        <Glogin/>
+                                    <li>   
+                                        <Link to='/Login'><span class="glyphicon glyphicon-log-in" style={{backgroundColor:'transparent'}}></span> Login</Link>                  
                                     </li>
-                    
-                                    {/* <li><a href="#"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li> */}
-                                    
+                                
                                 </ul>
+
                                
                                 </div>
                             </div>
@@ -80,48 +65,8 @@ class NavBar extends React.Component {
          
             </div>
         )
-    }
-    else{
-        return(
-            <div className='HEADER'>
-                
-            <nav class="navbar navbar" style={{backgroundColor:'transparent',height:'150px'}}>
-                <div class="container-fluid" style={{backgroundColor:"transperant" ,color:'orange'}}>
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" style={{backgroundColor:'tomato'}} data-target="#myNavbar">
-                            <span style={{backgroundColor:'white'}} class="icon-bar"></span>
-                            <span style={{backgroundColor:'white'}} class="icon-bar"></span>
-                            <span style={{backgroundColor:'white'}} class="icon-bar"></span>                        
-                        </button>
-                        <a class="" style={{}} href="#">
-                            <div  >
-                            {/* <img src='/images/mihome.png' className='HomeIcon'  /> */}
-                            <button className='brand' >MI</button> 
-                            </div>
-                        
-                        </a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav"style={{color:''}}>
-                    <li class="active dropbtn"><a href="#">MI MOBILES</a></li>
-                                    <li class="dropdown">
-                                    <a  href="#">REDMI MOBILES </a>
-                                  
-                                    </li>
-                                    <li><a href="#">POCO MOBILES</a></li>
-                    </ul>
-                    <div className=''>
-                        <img className='PP' src={this.state.User.imageUrl} />
-                    
-                   
-                    </div>
-                
-                    </div>
-                </div>
-            </nav>
-         </div>
-)
-    }
+    
+
     
    
     }

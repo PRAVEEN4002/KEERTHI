@@ -14,7 +14,7 @@
     margin-bottom: 3%;
     width: 19%;
     height: 380px;
-    position:static;
+    position:relative;
     margin-left: 5%;
     float: left;
 }
@@ -359,22 +359,25 @@
     }
     .maincard .card1 .TextContent .Name{
        font-size: 5px;
-       padding-top: 105%;
+       padding-top: 95%;
   
     }
     .maincard .card1 .TextContent .btn{
   
   
       height: 13px;
-      font-weight: 100;
+     
       margin-left: 1.5%;
      padding: 2px 5px ;
      margin-top: 10px;
      padding-bottom: 0px;
-     font-size: 3px;
+     font-size: 5px;
+      font-weight: 900;
+      margin-right: 2px;
     }
+  
     .maincard .card1:hover .TextContent{
-        height: 120px;
+        height: 126px;
         
     }
  
@@ -395,12 +398,14 @@
   
   
       height: 10px;
-      font-weight: 100;
+      font-weight: 700;
       margin-left: 1.5%;
      padding: 2px 5px ;
      margin-top: 4px;
      padding-bottom: 0px;
-     font-size: 2px;
+      margin-right: 2px;
+     font-size: 4px;
+   
     }
     .maincard .card1:hover .TextContent{
         height: 120px;

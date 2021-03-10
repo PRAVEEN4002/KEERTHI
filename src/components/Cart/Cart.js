@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import './Cart.css'
+import Glogin from '../Home/Glogin/login.js'
 const CartUrl='https://miapi4002.herokuapp.com/CartItems?GoogleId='
 const CartRemove='https://miapi4002.herokuapp.com/removeItem'
 class Cart extends React.Component{
@@ -21,17 +22,20 @@ class Cart extends React.Component{
     console.log('it is the url',CartUrl1)
     fetch(CartUrl1,{method:'GET'}).then((res)=>res.json()).then((data)=>{this.setState({Cart:data})})
     var x=0;
-     localStorage.setItem('TotalPrice',x)
+     localStorage.setItem('TotalPrice',x);
+     var i=localStorage.setItem("i",x);
 }
 
 
  Product=(x,y)=>{
    var product=x*y;
     var p;
+   var i=localStorage.getItem('i')
   p=localStorage.getItem('TotalPrice');
   p=Number(p)+Number(product);
   localStorage.setItem('TotalPrice',p)
   console.log('this is private body',Number(p))
+  i++
    return (product)
    
  }
@@ -119,53 +123,56 @@ renderCartItems=(cart)=>{
 
 }
   render(){
+  if(!this.documentData==''){
      var x=localStorage.getItem('TotalPrice')
     console.log('spider hulk',x)
       return(
           <React.Fragment>
               <div className='container'>
-               
                 <div className='row'>
-                <div className='Cart-H'>Your Shopping Cart:</div>
-                  <div className='  col-md-8 col-lg-8 col-sm-8 col-xs-12'>
-                    <div className='M1'>
-                       <div className='row'>
-                         <div className='col-md-3 col-sm-3 col-xs-3'>
-                             Product
-                         </div>
-                         <div className='col-md-3 col-sm-3 col-xs-3'>
-                              Model
-                           </div>
-                           <div className='col-md-3 col-sm-3 col-xs-3'>
-                             Total Price
-                           </div>
-                           <div className='col-md-3 col-sm-3 col-xs-3'>
-                              Quantity
-                           </div>
-                      </div>
-                      
-                    </div>
-                  
-                     {this.renderCartItems(this.state.Cart)}
-                   
-                  </div>
-                  <div className=' col-md-4 col-lg-4 col-sm-4 col-xs-12'>
-                      <div className='S-Cart'>
-                        <div className='wel' style={{width:'80%',marginTop:'5px'}}>
-                        <h3>TotalPrice:   &#8377;{this.TotalPrice()}/-</h3>
+                  <div className='Cart-H'>Your Shopping Cart:</div>
+                    <div className='  col-md-8 col-lg-8 col-sm-8 col-xs-12'>
+                      <div className='M1'>
+                        <div className='row'>
+                          <div className='col-md-3 col-sm-3 col-xs-3' style={{textAlign:'center'}}>
+                              Product
+                          </div>
+                          <div className='col-md-3 col-sm-3 col-xs-3' style={{textAlign:'center'}}>
+                                Model
+                            </div>
+                            <div className='col-md-3 col-sm-3 col-xs-3' style={{textAlign:'center'}}>
+                              Price
+                            </div>
+                            <div className='col-md-3 col-sm-3 col-xs-3' style={{textAlign:'center'}}>
+                                Quantity
+                            </div>
                         </div>
-                      
-                         <button className='btn btn-success'>Proceed to checkout</button>
+                        
                       </div>
+                    
+                      {this.renderCartItems(this.state.Cart)}
+                    
+                    </div>
+                    <div className=' col-md-4 col-lg-4 col-sm-4 col-xs-12'>
+                        <div className='S-Cart'>
+                          <div className='wel' style={{width:'80%',marginTop:'5px'}}>
+                          <h3>TotalPrice:   &#8377; {this.TotalPrice()}/-</h3>
+                          </div>
+                        
+                          <button className='btn btn-success'>Proceed to checkout</button>
+                        </div>
+                    </div>
                   </div>
-              </div>
-                
-                
               </div>
       
 
           </React.Fragment>
       )
+  }else{
+    return(
+      <img style={{width:'480px',height:'320px',textAlign:'center',marginLeft:'30%'}} src='https://cdn.dribbble.com/users/1677926/screenshots/8855433/bird.gif'/>
+  )
   }
+}
 }
 export default Cart

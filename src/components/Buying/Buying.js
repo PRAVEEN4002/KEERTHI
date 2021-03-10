@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import './Buying.css'
 import {Link} from 'react-router-dom'
+import Glogin from '../Home/Glogin/login.js'
+
 const url='https://miapi4002.herokuapp.com/mobiles'
 const iurl='https://miapi4002.herokuapp.com/images'
 const CartUrl='https://miapi4002.herokuapp.com/add'
@@ -165,17 +167,24 @@ class Buying extends React.Component{
                     'Content-Type':'application/json'
                 },
                 body:JSON.stringify(this.state.Cart)
+              
             }).then(this.props.history.push('/Cart'))
 
+            
+  
+           
     }
    
     StoreModel=(MBM,MBC,MBI,MBP)=>{
      
+  
         this.setState({MobileColor:MBC,MobileImage:MBI,MobileModel:MBC,MobilePrice:MBP})
-        var UN=this.documentData.name;
+        var UN=this.documentData    ;
         var GID=this.documentData.googleId;  
         this.setState({Cart:{UserName:UN,GoogleId:GID,Name:this.props.match.params.name,Model:MBM,Color:MBC,Image:MBI,Price:MBP,Quantity:this.state.Quantity}})
-    }
+    
+       }
+     
 
     renderData=(Product)=>{
 
@@ -194,7 +203,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -206,14 +215,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                            
+                                           
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -227,7 +233,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -259,11 +265,14 @@ class Buying extends React.Component{
                                             </div>
                                         </div>
                                      
-                                            <div className='btn btn-primary btn-lg dt-btn' onClick={()=>{this.handleSubmit()}}>
+                                        <Link to='/Cart'>
+                                            
+                                       
+                                         <div className='btn btn-primary btn-lg dt-btn' onClick={()=>{this.handleSubmit()}}>
                                                 Buy Now
                                             </div>
-                                        
-                                     
+                                        </Link>  
+
                                             <div className='btn btn-primary btn-lg dt-btn' onClick={()=>{this.handleSubmit(this.state.MobileName,this.state.MobileColor,this.state.MobileModel,this.state.MobilePrice,this.state.MobileImage,this.state.MobileQuantity)}}>
                                                 Add to Cart
                                             </div>
@@ -276,7 +285,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -288,14 +297,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                       
+                                           
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -306,10 +312,10 @@ class Buying extends React.Component{
                                                 {item.Model[0].Model3}
                                                 </div>
                                         </div>
-    
+                                        <div className='dt-color-h1'>choose your Favourite color</div>
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                             
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -364,7 +370,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -376,14 +382,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                           
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -397,7 +400,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>choose your Favourite color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -448,26 +451,23 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
                                                 {item.Model[0].Model2},&nbsp; {item.Color[0].Color1}
                                             </h4>
                                             </div>
-    
+                                    
     
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                           
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -481,7 +481,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -537,7 +537,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -549,14 +549,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -570,7 +567,8 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                  
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -619,7 +617,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -631,14 +629,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                        
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                                    <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -652,7 +647,8 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -708,7 +704,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -720,14 +716,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -741,7 +734,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -789,7 +782,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -801,14 +794,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                        <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -822,7 +812,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -875,7 +865,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -887,14 +877,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -908,7 +895,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -956,7 +943,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -968,14 +955,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                            
+                                           
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -989,7 +973,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1041,7 +1025,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1053,14 +1037,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                           
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1074,7 +1055,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1122,7 +1103,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1134,14 +1115,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1155,7 +1133,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1209,7 +1187,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1221,14 +1199,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                    
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1242,7 +1217,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1289,7 +1264,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1301,14 +1276,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                           
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1322,7 +1294,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1375,7 +1347,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1387,14 +1359,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1408,7 +1377,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1455,7 +1424,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1467,14 +1436,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                        
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1488,7 +1454,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1541,7 +1507,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1553,14 +1519,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                            
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1574,7 +1537,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1622,7 +1585,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1634,14 +1597,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1655,7 +1615,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1' ,item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1710,7 +1670,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1722,14 +1682,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                           
+                                        
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1743,7 +1700,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1791,7 +1748,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1803,14 +1760,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model1}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1824,7 +1778,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1877,7 +1831,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1889,14 +1843,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1910,7 +1861,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Price[0].Model1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -1958,7 +1909,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -1970,14 +1921,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model2}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                         
+                                         
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -1991,7 +1939,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -2044,7 +1992,7 @@ class Buying extends React.Component{
     
                                             <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -2056,14 +2004,11 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
-                                            <ul type="square" >
-                                                <li className='dt-li'>upto 10% cashback on phone pay</li>
-                                                <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
-                                            </ul>
+                                          
+                                          
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -2077,7 +2022,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1' ,item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -2125,7 +2070,7 @@ class Buying extends React.Component{
                                     <React.Fragment>
                                         <div className='dt-main' onClick>
                                             <div className='dt-h1'>
-                                            <h1>{item.Name}</h1>
+                                            {item.Name}
     
                                             </div>
                                             <h4 style={{fontWeight:'lighter'}}>
@@ -2137,14 +2082,14 @@ class Buying extends React.Component{
                                             <div className='dt-price'>
                                             &#8377;{item.Price[0].Model3}
                                             </div>
-                                            <hr/>
+                                           
                                             <ul type="square" >
                                                 <li className='dt-li'>upto 10% cashback on phone pay</li>
                                                 <li className='dt-li'>Cover your phone's screen against accidental & liquid damages with Mi Screen Protect. 2 claims per year!</li>
                                             </ul>
                                         {/* storagee boxes */}
                                         <div>
-                                            <h2>Storage</h2>
+                                            <div className='dt-color-st'>Storage</div>
                                                 <div className='dt-st' onClick={()=>{this.handleSt(item.Model[0].Model1,'Model1',item.Price[0].Model1)}}>
                                                     {item.Model[0].Model1}
                                                 </div>
@@ -2158,7 +2103,7 @@ class Buying extends React.Component{
     
                                             <div>
                                                 {/* color boxes */}
-                                                <h2>Choose Your Favourite Color</h2>
+                                                <div className='dt-color-h1'>Choose Your Favourite Color</div>
                                                 <button className='dt-color' onClick= {()=>{this.handleImg('Img1','Color1',item.Images[0].color[0].Img1,item.Color[0].Color1)}}  >
                                                 {item.Color[0].Color1}
                                                 </button>
@@ -2210,12 +2155,21 @@ class Buying extends React.Component{
                     })
                 )
             }
+            else{
+                return(
+                    <div className='container' style={{alignContent:'center'}}>
+                        <img src='/images/loading.gif' width='160px' height='160px'/>
+                        <h1>Loading</h1>
+                    </div>
+                )
+            }
     }
     render(){
         console.log('HHHHHHHHHHHHHH',this.state.MobileColor)
     // console.log('it is the Image state',this.state.Image)
       console.log('bandi banid bandi bandi bandi bandi bandi',this.state.Cart.MobileColor)
-       
+     if(!this.documentData=='')
+      {
         return(
            <React.Fragment>
                <div className='container-fluid'>
@@ -2234,16 +2188,28 @@ class Buying extends React.Component{
                          
                            {this.renderData(this.state.Product)}
                          
-
+                                    
                          </div>
 
                        </div>
                    </div>
                    <h1>{this.state.Name}</h1>
+    
+       
+       
                </div>
            </React.Fragment>
         )
-    }
+       }else{
+           return(
+               <div className='container-fluid well login'>
+                   <Glogin/>
+                   <h2>please login to continue</h2>
+                   <img style={{width:'300px' ,height:'360px'}} src='https://media1.giphy.com/media/YPyrOxWHSvMCCCJB8z/source.gif'/>
+               </div>
+           )
+       }
+     }
 }
 export default Buying
 
