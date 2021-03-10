@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import './Buying.css'
+
 import {Link} from 'react-router-dom'
 import Glogin from '../Home/Glogin/login.js'
 
@@ -24,7 +25,7 @@ class Buying extends React.Component{
             MobileImage:'',
             MobileColor:'',
             MobileQuantity:'1',
-          
+            
             Cart:{
              UserName:'',
             GoogleId:'',
@@ -2164,6 +2165,7 @@ class Buying extends React.Component{
                 )
             }
     }
+  
     render(){
         console.log('HHHHHHHHHHHHHH',this.state.MobileColor)
     // console.log('it is the Image state',this.state.Image)
@@ -2202,11 +2204,18 @@ class Buying extends React.Component{
         )
        }else{
            return(
-               <div className='container-fluid well login'>
-                   <Glogin/>
-                   <h2>please login to continue</h2>
-                   <img style={{width:'300px' ,height:'360px'}} src='https://media1.giphy.com/media/YPyrOxWHSvMCCCJB8z/source.gif'/>
-               </div>
+               <React.Fragment>
+                   
+                   
+                    <div className='container  login'>
+                       
+                    <h2>please login to continue </h2>
+                    <h3>Login is at the navbar</h3>
+                    <img style={{width:'300px' ,height:'360px'}} src='https://media1.giphy.com/media/YPyrOxWHSvMCCCJB8z/source.gif'/>
+                 
+                </div>
+               </React.Fragment>
+               
            )
        }
      }

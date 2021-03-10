@@ -21,7 +21,7 @@ class NavBar extends React.Component {
         
             <div className='HEADER'>
             
-                        <nav class="navbar navbar" style={{backgroundColor:'transparent',height:'150px'}}>
+                        <nav class="navbar navbar-fixed" style={{backgroundColor:'transparent',height:'150px'}}>
                             <div class="container-fluid" style={{backgroundColor:"transperant" ,color:'orange'}}>
                                 <div class="navbar-header">
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" style={{backgroundColor:'tomato'}} data-target="#myNavbar">
@@ -29,7 +29,7 @@ class NavBar extends React.Component {
                                         <span style={{backgroundColor:'white'}} class="icon-bar"></span>
                                         <span style={{backgroundColor:'white'}} class="icon-bar"></span>                        
                                     </button>
-                                    <a class="" style={{}} href="#">
+                                    <a class="navbar-header" style={{}} href="#">
                                         <div  >
                                         {/* <img src='/images/mihome.png' className='HomeIcon'  /> */}
                                           <Link to='/'>
@@ -43,15 +43,13 @@ class NavBar extends React.Component {
                                 <div class="collapse navbar-collapse" id="myNavbar">
                                 <ul class="nav navbar-nav"style={{color:''}}>
                                     
-                                    <li class="active dropbtn"><Link to={`/Products/${this.state.Brands.name2}`}> MI MOBILES </Link></li>
-                                    <li class="dropdown"><Link to={`/Products/${this.state.Brands.name1}`}> REDMI MOBILES</Link></li>
+                                    <li ><Link to={`/Products/${this.state.Brands.name2}`}> MI MOBILES </Link></li>
+                                    <li><Link to={`/Products/${this.state.Brands.name1}`}> REDMI MOBILES</Link></li>
                                     <li><Link to={`/Products/${this.state.Brands.name3}`}> POCO MOBILES</Link></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                         <Glogin/>
-                                    {/* <li>   
-                                        <Link to='/Login'><span class="glyphicon glyphicon-log-in" style={{backgroundColor:'transparent'}}></span> Login</Link>                  
-                                    </li> */}
+                                    
                                 
                                 </ul>
 

@@ -34,7 +34,7 @@ export class login extends Component {
                 <React.Fragment>
 
                 <li>
-                    <GoogleLogin clientId="893427255421-925ku8ne5bju547d25fmivdom8c05qjc.apps.googleusercontent.com" 
+                    <GoogleLogin clientId="893427255421-6n9hvjmricuj4q3jkskhoe8lc03dponn.apps.googleusercontent.com" 
                     buttonText="Login"
                     onSuccess={this.responseGoogle}
                     onFailure={this.AllowCookies}
